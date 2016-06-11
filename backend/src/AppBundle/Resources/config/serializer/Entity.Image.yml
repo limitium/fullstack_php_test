@@ -1,0 +1,5 @@
+AppBundle\Entity\Image:
+    exclusion_policy: ALL
+    properties:
+        url:
+            expose: true

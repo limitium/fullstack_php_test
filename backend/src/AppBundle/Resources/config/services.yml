@@ -1,0 +1,16 @@
+services:
+    app.repository.album:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - AppBundle\Entity\Album
+
+    app.repository.image:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - AppBundle\Entity\Image
+
+    app.gallery:
+        class: AppBundle\Service\GalleryService
+        arguments: ["@app.repository.album","@app.repository.image","@knp_paginator"]

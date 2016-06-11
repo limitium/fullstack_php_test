@@ -1,0 +1,6 @@
+app:
+    resource: routing_rest.yml
+
+welcome:
+    path:  /
+    defaults: { _controller: AppBundle:Layout:index }

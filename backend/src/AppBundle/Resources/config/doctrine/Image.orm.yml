@@ -1,0 +1,22 @@
+AppBundle\Entity\Image:
+    type: entity
+    repositoryClass: AppBundle\Repository\ImageRepository
+    fields:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            nullable: false
+        url:
+            type: string
+            nullable: false
+    manyToOne:
+        album:
+          targetEntity: AppBundle\Entity\Album
+          inversedBy: images
+          joinColumns:
+              album_id:
+                  referencedColumnName: id
