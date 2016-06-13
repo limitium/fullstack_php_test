@@ -1,7 +1,13 @@
 class GalleryController extends Marionette.Controller
+  initialize:(opt)->
+    @app = opt.app
   albums: ->
     albumCollection = new AlbumCollection()
-    albumCollection.fetch()
+
+    @app.trigger('progress:show')
+    albumCollection.fetch(success:=>
+      @app.trigger('progress:hide')
+    )
 
     view = new AlbumsCollectionView(
       collection: albumCollection
@@ -11,9 +17,11 @@ class GalleryController extends Marionette.Controller
 
   album: (id, page)->
     paginator = new Paginator(id: id)
-
     album = new Album(id: id, page: page ? 1)
-    album.fetch(success: (model, response)->
+
+    @app.trigger('progress:show');
+    album.fetch(success: (model, response)=>
+      @app.trigger('progress:hide');
       paginator.set response.paginator.data
     )
 

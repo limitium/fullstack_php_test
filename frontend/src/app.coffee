@@ -5,8 +5,13 @@ App.on "start", ->
     content: '#content'
 
   App.router = new MainRouter(
-    controller: new GalleryController()
+    controller: new GalleryController(app:App)
   )
+
+  new ProgressView(
+    app:App
+  )
+
   Backbone.history.start(pushState: true)
 
 $ ->
