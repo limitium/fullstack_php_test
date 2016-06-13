@@ -1,5 +1,7 @@
 /web/bundles/
-/web/app/
+/web/js/
+/web/css/
+/web/fonts/
 /app/Resources/views/layout
 /app/bootstrap.php.cache
 /app/cache/*

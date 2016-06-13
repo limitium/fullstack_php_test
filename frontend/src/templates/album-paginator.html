@@ -1,0 +1,22 @@
+<div class="divider"></div>
+<div class="row">
+    <div class="col offset-s4 s8">
+        <ul class="pagination">
+            <li class="<% if (first === current) { %>disabled<% } else { %>waves-effect<% } %>">
+                <a href="javascript:;" data-page="<%- first %>">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            <% _.each(pagesInRange, function(item) { %>
+            <li class="<% if (item === current) { %>active<% } else { %>waves-effect<% } %>">
+                <a href="javascript:;" data-page="<%- item %>"><%- item %></a>
+            </li>
+            <% }) %>
+            <li class="<% if (last === current) { %>disabled<% } else { %>waves-effect<% } %>">
+                <a href="javascript:;" data-page="<%- last %>">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

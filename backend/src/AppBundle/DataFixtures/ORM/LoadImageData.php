@@ -20,7 +20,7 @@ class LoadImageData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < self::MAX_IMAGES; $i++) {
+        for ($i = 0; $i < self::$MAX_IMAGES; $i++) {
             $image = new Image();
             $image->setName('Image ' . $i);
             $image->setAlbum($this->getReference('album-' . ($i % LoadAlbumData::$MAX_ALBUMS)));

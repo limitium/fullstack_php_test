@@ -1,0 +1,21 @@
+.card-image {
+  img {
+    height: 90px;
+    filter: blur(1px);
+  }
+}
+
+#menu {
+  a[disabled] {
+    pointer-events: none;
+  }
+}
+
+#images {
+  img{
+    width: 180px;
+    height: 300px;
+    margin: 5px auto;
+    display: block;
+  }
+}

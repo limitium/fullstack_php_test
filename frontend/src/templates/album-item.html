@@ -1,0 +1,12 @@
+<div class="col s12 m4">
+    <div class="card">
+        <div class="card-image">
+            <% _.each(images, function(item) { %>
+            <img src="<%- item.url %>">
+            <% }) %>
+        </div>
+        <div class="card-action">
+            <a href="javascript:;"><%-name %></a>
+        </div>
+    </div>
+</div>
