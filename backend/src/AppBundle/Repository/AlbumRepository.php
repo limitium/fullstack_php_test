@@ -26,11 +26,11 @@ class AlbumRepository extends EntityRepository
         $resultSetMapping->addJoinedEntityResult('AppBundle\Entity\Image', 'c', 'a', 'images');
         $resultSetMapping->addFieldResult('c', 'image_id', 'id');
         $resultSetMapping->addFieldResult('c', 'url', 'url');
-        $resultSetMapping->addFieldResult('c', 'name', 'name');
+        $resultSetMapping->addFieldResult('c', 'image_name', 'name');
 
         return $this->getEntityManager()->createNativeQuery("
             SELECT
-              a.id,a.name,c.id as image_id,c.album_id,c.name,c.url
+              a.id,a.name,c.id as image_id,c.album_id,c.name as image_name,c.url
             FROM album a
               LEFT JOIN
               (

@@ -13,18 +13,18 @@ class AlbumControllerTest extends WebTestCase
         $client = static::createClient();
         $serializer = SerializerBuilder::create()->build();
 
-        $client->request('GET', '/albums');
+        $client->request('GET', '/api/albums');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /albums");
 
         $albums = $serializer->deserialize($client->getResponse()->getContent(), 'array', 'json');
         $this->assertEquals(5, sizeof($albums), "Unexpected number of albums");
 
         $firstAlbumId = $albums[0]['id'];
-        $client->request('GET', '/album/' . $firstAlbumId);
+        $client->request('GET', '/api/album/' . $firstAlbumId . '/page/1');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /album/" . $firstAlbumId);
 
-        $images = $serializer->deserialize($client->getResponse()->getContent(), 'array', 'json');
-        $this->assertLessThan(11, sizeof($images['items']), "Images wasn't paginated");
+        $paginatedAlbum = $serializer->deserialize($client->getResponse()->getContent(), 'array', 'json');
+        $this->assertLessThan(11, sizeof($paginatedAlbum['album']['images']), "Images wasn't paginated");
     }
 
 

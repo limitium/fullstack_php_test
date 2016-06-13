@@ -1,0 +1,12 @@
+AppBundle\Entity\Album:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [album_list, album_page]
+        name:
+            expose: true
+            groups: [album_list, album_page]
+        images:
+            groups: [album_list, album_page]
+            expose: true

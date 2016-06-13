@@ -37,7 +37,7 @@ class Album
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class Album
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -93,10 +93,15 @@ class Album
     /**
      * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
         return $this->images;
+    }
+
+    public function setImages(ArrayCollection $images)
+    {
+        $this->images = $images;
     }
 }

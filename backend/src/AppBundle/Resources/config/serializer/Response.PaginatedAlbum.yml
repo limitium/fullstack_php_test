@@ -1,0 +1,9 @@
+AppBundle\Response\PaginatedAlbum:
+    exclusion_policy: ALL
+    properties:
+        album:
+            expose: true
+            groups: [album_page]
+        paginator:
+            expose: true
+            groups: [album_page]

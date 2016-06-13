@@ -9,8 +9,9 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use AppBundle\Service\GalleryService;
 use AppBundle\Entity\Album;
+use AppBundle\Service\GalleryService;
+use AppBundle\Response\PaginatedAlbum;
 
 /**
  * Album controller.
@@ -26,24 +27,12 @@ class AlbumController extends Controller
 
     /**
      * @Rest\Get("/albums")
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"album_list"})
      */
     public function getAlbumsAction()
     {
 
         return $this->galleryService->getAllAlbumsWithImages();
-    }
-
-    /**
-     * @Rest\Get("/album/{album}")
-     * @Rest\View()
-     * @param Album $album
-     * @return SlidingPagination
-     */
-    public function getAlbumAction(Album $album)
-    {
-
-        return $this->galleryService->getPaginatedImagesByAlbum($album);
     }
 
     /**
@@ -53,7 +42,7 @@ class AlbumController extends Controller
      *         "page": "\d+"
      *     }
      * )
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"album_page"})
      * @param Album $album
      * @param $page
      * @return SlidingPagination
@@ -61,6 +50,6 @@ class AlbumController extends Controller
     public function getAlbumPageAction(Album $album, int $page)
     {
 
-        return $this->galleryService->getPaginatedImagesByAlbum($album, $page);
+        return new PaginatedAlbum($album, $this->galleryService->getPaginatedImagesByAlbum($album, $page));
     }
 }

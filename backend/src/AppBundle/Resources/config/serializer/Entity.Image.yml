@@ -3,3 +3,4 @@ AppBundle\Entity\Image:
     properties:
         url:
             expose: true
+            groups: [album_list, album_page]

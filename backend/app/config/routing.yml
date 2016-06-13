@@ -1,6 +1,9 @@
 app:
     resource: routing_rest.yml
+    prefix: api
 
 welcome:
-    path:  /
+    pattern: /{url}
     defaults: { _controller: AppBundle:Layout:index }
+    requirements:
+      url: ".*"
